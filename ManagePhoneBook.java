@@ -10,13 +10,18 @@ public class ManagePhoneBook {
             sc.nextLine();
             switch (choice){
                 case 1:
-                    System.out.println("Enter the id: ");
-                    int id = sc.nextInt();
+                    System.out.println("Choose: \n1.Display the List \n2.Display the contact ");
+                    int n = sc.nextInt();
                     sc.nextLine();
-                    System.out.println("Enter the type name: ");
-                    String type = sc.nextLine();
-                    Type find = new Type(id, type);
-                    apps.display(find);
+                    if(n == 1) {
+                        apps.display();
+                    }else{
+                        System.out.println("Enter id: ");
+                        int display_id = sc.nextInt();
+                        System.out.println("Enter Type name: ");
+                        String typeName = sc.nextLine();
+                        apps.display(new Type(display_id, typeName));
+                    }
                     break;
                 case 2:
                     System.out.println("Enter contact name: ");

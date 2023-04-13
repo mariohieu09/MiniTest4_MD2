@@ -62,15 +62,10 @@ public class PhoneBookManage extends Phone implements IPhone {
     list.add(contact);
   }
 
-  @Override
-  public void display(Type type) {
+
+  public void display() {
       ArrayList<Contact> list = new ReadFile<Contact>().ReadFile(new File("Book"));
-      Contact p = list.stream().filter(x -> x.getType().toString().equals(type.toString())).findAny().orElse(null);
-      if(p == null){
-          System.out.println("Khong ton tai nguoi nay!");
-      }else{
-          System.out.println(p);
-      }
+      list.forEach(System.out::println);
   }
   @Override
   public void sort() {
@@ -103,5 +98,14 @@ public class PhoneBookManage extends Phone implements IPhone {
        WriteFile wf = new WriteFile();
        wf.WriteFile(list, book);
    }
+    public void display(Type type) {
+        ArrayList<Contact> list = new ReadFile<Contact>().ReadFile(new File("Book"));
+        Contact p = list.stream().filter(x -> x.getType().equals(type)).findAny().orElse(null);
+        if(p != null) {
+            System.out.println(p);
+        }else{
+            System.out.println("Khong ton tai");
+        }
+    }
 
 }
