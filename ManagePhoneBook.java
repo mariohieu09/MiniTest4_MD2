@@ -24,11 +24,28 @@ public class ManagePhoneBook {
                     }
                     break;
                 case 2:
-                    System.out.println("Enter contact name: ");
-                    String name = sc.nextLine();
-                    System.out.println("Enter contact phone number: ");
-                    String phone = sc.nextLine();
-                    apps.insertPhone(name, phone);
+                    System.out.println("Choose the insert method: \n1.Insert contact \n2.Insert new contact");
+                    int insertChoice = sc.nextInt();
+                    sc.nextLine();
+                    if(insertChoice == 1) {
+                        System.out.println("Enter contact name: ");
+                        String name = sc.nextLine();
+                        System.out.println("Enter contact phone number: ");
+                        String phone = sc.nextLine();
+                        apps.insertPhone(name, phone);
+                    }else if(insertChoice == 2){
+                        System.out.println("Enter new name: ");
+                        String name = sc.nextLine();
+                        System.out.println("Enter new number ");
+                        String number = sc.nextLine();
+                        System.out.println("Enter new id: ");
+                        int id = sc.nextInt();
+                        sc.nextLine();
+                        System.out.println("Enter new type name: ");
+                        String typeName = sc.nextLine();
+                        Contact contact = new Contact(name, number, new Type(id, typeName));
+                        apps.insertPhone(contact);
+                    }
                     break;
                 case 3:
                     System.out.println("Enter contact name: ");
